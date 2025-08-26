@@ -1,32 +1,39 @@
-# ALX Travel App – API (alx_travel_app_0x01)
+# ALX Travel App - Version 0x03
 
-This is a Django-based REST API for managing **travel listings and bookings**, developed as part of the ALX Software Engineering program.
+## 0. Background Task Management with Celery and Email Notifications in Django
 
-## 🚀 Features
+### Objective
+Configure Celery with RabbitMQ to handle background tasks and implement an email notification feature for bookings.
 
-- CRUD operations for **Listings** and **Bookings**
-- RESTful API endpoints using Django REST Framework
-- Auto-generated API docs with Swagger (drf-yasg)
-- JSON responses with proper validation
-- Modular code with ViewSets and Routers
+---
 
-## ⚙️ Setup Instructions
+## Features
+- Listings management (create, update, delete)
+- Booking system with check-in/check-out
+- Email notifications for bookings (asynchronous with Celery)
+- Payment system integration
+- Reviews and ratings for listings
 
-1. **Clone the project**  
-   ```bash
-   git clone https://github.com/waregamo/alx_travel_app_0x01.git
-   cd alx_travel_app_0x01
+---
 
- API Endpoints
-All API endpoints are accessible under:
+## Requirements
+- Python 3.12+
+- Django 4.x+
+- MySQL or PostgreSQL
+- RabbitMQ
+- Celery
 
-http://127.0.0.1:8000/api/
-Method	Endpoint	Description
-GET	/api/welcome/	Welcome message
-GET	/api/listings/	List all listings
-POST	/api/listings/	Create new listing
-GET	/api/bookings/	List all bookings
-POST	/api/bookings/	Create new booking
+Python dependencies are listed in `requirements.txt`.
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/waregamo/alx_travel_app_0x03.git
+cd alx_travel_app_0x03
 
 
 
