@@ -1,0 +1,34 @@
+from alx_travel_app.listings.models import Listing, Booking
+from alx_travel_app.listings.tasks import send_booking_email
+
+# 1. Ensure a listing exists
+listing, created = Listing.objects.get_or_create(
+    title="Sample Hotel",
+    defaults={
+        "description": "Nice place to stay",
+        "location": "Eldoret",
+        "price_per_night": 1000.00
+    }
+)
+
+# 2. Create a booking
+booking = Booking.objects.create(
+    listing=listing,
+    customer_name='John ',
+    customer_email='waregamoses20@gmail.com',  # Replace with your test email
+    check_in='2025-09-01',
+    check_out='2025-09-05'
+)
+
+# 3. Prepare booking details for email
+booking_details = (
+    f"Booking ID: {booking.id}, "
+    f"Customer: {booking.customer_name}, "
+    f"Check-in: {booking.check_in}, "
+    f"Check-out: {booking.check_out}, "
+    f"Listing: {booking.listing.title}"
+)
+
+# 4. Trigger the email task asynchronously
+task = send_booking_email.delay(booking.customer_email, booking_details)
+print(f"Email task queued: {task.id}")
